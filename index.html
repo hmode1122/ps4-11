@@ -1,71 +1,81 @@
 <!DOCTYPE html>
 <html lang="ar">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>New Life - تهكير PS4 11.00</title>
+  <meta charset="UTF-8">
+  <title>PS4 11.00 | New Life Exploit</title>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Cairo&display=swap');
-
     body {
-      font-family: 'Cairo', sans-serif;
-      background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
-      color: #333;
       margin: 0;
-      padding: 40px 20px;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #0f0f0f, #1e1e1e);
+      color: #00ffcc;
       display: flex;
       flex-direction: column;
       align-items: center;
-      min-height: 100vh;
-      box-sizing: border-box;
+      justify-content: center;
+      height: 100vh;
     }
 
     h1 {
-      font-size: 3rem;
-      margin-bottom: 0.5rem;
-      color: #2c3e50;
-      text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+      font-size: 2.5rem;
+      color: #00ffcc;
+      margin-bottom: 10px;
     }
 
     p {
       font-size: 1.2rem;
-      margin-bottom: 2rem;
-      color: #34495e;
+      margin-bottom: 30px;
     }
 
     button {
-      background-color: #27ae60;
+      padding: 15px 30px;
+      font-size: 1.1rem;
       border: none;
-      color: white;
-      padding: 15px 50px;
-      font-size: 1.5rem;
-      border-radius: 50px;
+      border-radius: 10px;
+      background-color: #00ffcc;
+      color: #000;
       cursor: pointer;
-      box-shadow: 0 8px 15px rgba(39, 174, 96, 0.4);
-      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+      transition: background 0.3s ease;
     }
 
     button:hover {
-      background-color: #2ecc71;
-      box-shadow: 0 12px 20px rgba(46, 204, 113, 0.6);
+      background-color: #00ddaa;
     }
 
-    footer {
-      margin-top: auto;
-      font-size: 0.9rem;
-      color: #7f8c8d;
+    .status {
+      margin-top: 20px;
+      font-size: 1rem;
+      color: #ffffff;
     }
   </style>
 </head>
 <body>
-  <h1>New Life</h1>
-  <p>تهكير PS4 نظام 11.00 - خطوة بخطوة</p>
-  <button onclick="runExploit()">تشغيل التهكير</button>
 
-  <script src="exploit.js"></script>
+  <h1>🎮 PS4 Exploit - New Life</h1>
+  <p>اضغط على الزر لتحميل ملف التهكير (GoldHEN)</p>
+  <button onclick="loadGoldHEN()">تحميل GoldHEN</button>
+  <div class="status" id="status">...</div>
 
-  <footer>
-    &copy; 2025 ضلعي - كل الحقوق محفوظة
-  </footer>
+  <script>
+    async function loadGoldHEN() {
+      const status = document.getElementById('status');
+      status.textContent = "جاري تحميل الملف، انتظر...";
+
+      try {
+        const response = await fetch('https://hmode1122.github.io/ps4-11/goldhen.bin');
+        if (!response.ok) throw new Error('فشل تحميل الملف');
+
+        const data = await response.arrayBuffer();
+        status.textContent = `✅ تم تحميل الملف بنجاح (${data.byteLength} بايت)`;
+
+        // تقدر تضيف هنا كود إضافي للتعامل مع الـ payload
+
+      } catch (err) {
+        status.textContent = '❌ حدث خطأ أثناء تحميل الملف';
+        console.error(err);
+      }
+    }
+  </script>
+
 </body>
 </html>
